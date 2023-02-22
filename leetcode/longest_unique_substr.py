@@ -31,11 +31,11 @@ def longest_substr(s):
     for i in range(len(s)):
         j = i# 0,1
         while j < len(s):
-            if my_dict.get(s[i], False): #false:a,false:b,false:c,true:a|false:p,false:w,true:w, 
+            if my_dict.get(s[j], False): #false:a,false:b,false:c,true:a|false:p,false:w,true:w, 
                 if len(my_dict) > longest: # true| true
                     longest = len(my_dict) # 3,| 2
                     my_dict = {}
-                    my_dict[s[i]] = repr(j)
+                    my_dict[s[j]] = repr(j)
                     break
             else:
                     my_dict[s[j]] = repr(j) # {a=1, b=2, c=3}
@@ -46,20 +46,20 @@ def longest_substr(s):
         longest = len(my_dict)
     return longest
 
-s = "abcabcbb"
-print(longest_substr(s))
+# s = "abcabcbb"
+# print(longest_substr(s))
 
-s = "bbbbbb"
-print(longest_substr(s))
+# s = "bbbbbb"
+# print(longest_substr(s))
 
-s = "pwwkew"
-print(longest_substr(s))
+# s = "pwwkew"
+# print(longest_substr(s))
 
-s = " "
-print(longest_substr(s))
+# s = " "
+# print(longest_substr(s))
 
-s = "au"
-print(longest_substr(s))
+# s = "au"
+# print(longest_substr(s))
 
 s = "bwf"
 
