@@ -46,20 +46,20 @@ def longest_substr(s):
         longest = len(my_dict)
     return longest
 
-# s = "abcabcbb"
-# print(longest_substr(s))
+s = "abcabcbb"
+print(longest_substr(s))
 
-# s = "bbbbbb"
-# print(longest_substr(s))
+s = "bbbbbb"
+print(longest_substr(s))
 
-# s = "pwwkew"
-# print(longest_substr(s))
+s = "pwwkew"
+print(longest_substr(s))
 
-# s = " "
-# print(longest_substr(s))
+s = " "
+print(longest_substr(s))
 
-# s = "au"
-# print(longest_substr(s))
+s = "au"
+print(longest_substr(s))
 
 s = "bwf"
 
