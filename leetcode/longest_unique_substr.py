@@ -24,7 +24,7 @@ Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
 """
 
-def longest_substr(s):
+def longest_substr2(s):
     my_dict = {}
     longest = 0
 
@@ -34,9 +34,9 @@ def longest_substr(s):
             if my_dict.get(s[j], False): #false:a,false:b,false:c,true:a|false:p,false:w,true:w, 
                 if len(my_dict) > longest: # true| true
                     longest = len(my_dict) # 3,| 2
-                    my_dict = {}
-                    my_dict[s[j]] = repr(j)
-                    break
+
+                my_dict = {}
+                break
             else:
                     my_dict[s[j]] = repr(j) # {a=1, b=2, c=3}
             j +=1 # 1,2
@@ -46,6 +46,39 @@ def longest_substr(s):
         longest = len(my_dict)
     return longest
 
+def longest_substr(s):
+    my_dict = {}
+    longest = 0
+    left = 0
+    for i in range(len(s)):
+        if my_dict.get(s[i], False):
+            my_dict[s[i]] += 1
+        else:
+            my_dict[s[i]] = 1
+
+        while left <= i and my_dict[s[i]] > 1:
+            my_dict[s[i]] -= 1
+            if my_dict[s[left]] == 0:
+                del my_dict[s[left]]
+            left += 1
+        longest = max(longest, i - left + 1)
+
+    return longest
+
+        #     if my_dict.get(s[j], False): #false:a,false:b,false:c,true:a|false:p,false:w,true:w, 
+        #         if len(my_dict) > longest: # true| true
+        #             longest = len(my_dict) # 3,| 2
+
+        #         my_dict = {}
+        #         break
+        #     else:
+        #             my_dict[s[j]] = repr(j) # {a=1, b=2, c=3}
+        #     j +=1 # 1,2
+
+    # in case it's all unique str
+    # if len(my_dict) > longest:
+    #     longest = len(my_dict)
+    return longest
 s = "abcabcbb"
 print(longest_substr(s))
 
@@ -63,4 +96,7 @@ print(longest_substr(s))
 
 s = "bwf"
 
+print(longest_substr(s))
+
+s = "jbpnbwwd"
 print(longest_substr(s))
