@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Latitude and Longitude</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY"></script>
+    <script>
+      function geocodeAddress() {
+        var geocoder = new google.maps.Geocoder();
+        var address = document.getElementById("address").value;
+
+        geocoder.geocode({ address: address }, function (results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+
+            document.getElementById("latitude").innerHTML = latitude;
+            document.getElementById("longitude").innerHTML = longitude;
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" id="address" placeholder="Enter a location" size="100"/>
+    <button onclick="geocodeAddress()">Get Latitude and Longitude</button>
+    <p>Latitude: <span id="latitude"></span></p>
+    <p>Longitude: <span id="longitude"></span></p>
+  </body>
+</html>
+
