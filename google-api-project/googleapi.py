@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from dotenv import load_dotenv
 import time
-import collections
+# import collections
 
 import os
 # from pprint import pprint as pp
